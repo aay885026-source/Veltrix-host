@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veltrix Host - High Performance Hosting</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', Tahoma, sans-serif;
+        }
+        body {
+            background-color: #07090e;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px 8%;
+            background: rgba(7, 9, 14, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 1.5px;
+        }
+        .logo span {
+            color: #a855f7;
+            text-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 35px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #94a3b8;
+            font-size: 15px;
+            font-weight: 500;
+            transition: 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: #a855f7;
+        }
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 120px 20px;
+            background: radial-gradient(circle at center, rgba(168, 85, 247, 0.12) 0%, transparent 70%);
+        }
+        .hero h1 {
+            font-size: 52px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #ffffff 30%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero p {
+            font-size: 18px;
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+            line-height: 1.6;
+        }
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .btn {
+            padding: 14px 32px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .btn-primary {
+            background: #a855f7;
+            color: #ffffff;
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.4);
+            border: 1px solid #b366f8;
+        }
+        .btn-primary:hover {
+            background: #9333ea;
+            box-shadow: 0 0 35px rgba(168, 85, 247, 0.7);
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.03);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        /* Pricing Section */
+        .pricing {
+            padding: 90px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .pricing h2 {
+            font-size: 38px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        .pricing-subtitle {
+            color: #94a3b8;
+            margin-bottom: 50px;
+            font-size: 16px;
+        }
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        .card {
+            background: #0d111a;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 45px 35px;
+            position: relative;
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(168, 85, 247, 0.4);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+        }
+        .card.featured {
+            border-color: #a855f7;
+            background: linear-gradient(180deg, #0d111a 0%, #150d24 100%);
+            box-shadow: 0 10px 30px rgba(168, 85, 247, 0.15);
+        }
+        .badge {
+            position: absolute;
+            top: -12px;
+            right: 35px;
+            background: #a855f7;
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 5px 14px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .card-desc {
+            color: #94a3b8;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+        .price {
+            font-size: 36px;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 30px;
+        }
+        .price span {
+            font-size: 15px;
+            font-weight: 400;
+            color: #94a3b8;
+        }
+        .features-list {
+            list-style: none;
+            margin-bottom: 35px;
+        }
+        .features-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: #cbd5e1;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .features-list li::before {
+            content: "✓";
+            color: #a855f7;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">VELTRIX <span>HOST</span></div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Plans</a></li>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Support</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Next-Gen Cloud Hosting</h1>
+        <p>Deploy your bots, applications, and servers instantly with high performance and zero downtime. Start for free or scale up!</p>
+        <div class="btn-group">
+            <a href="#" class="btn btn-primary">Deploy Free Server 🚀</a>
+            <a href="#" class="btn btn-secondary">Explore Pro Plans 💎</a>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing">
+        <h2>Flexible Hosting Plans</h2>
+        <p class="pricing-subtitle">Choose the perfect plan that fits your project needs.</p>
+        <div class="cards-grid">
+            <!-- Free Plan -->
+            <div class="card">
+                <h3>Free Tier</h3>
+                <p class="card-desc">Perfect for testing and small personal projects.</p>
+                <div class="price">$0 <span>/ forever</span></div>
+                <ul class="features-list">
+                    <li>512 MB RAM Memory</li>
+                    <li>1 vCPU Processor Core</li>
+                    <li>Basic DDoS Protection</li>
+                    <li>Community Support</li>
+                </ul>
+                <a href="#" class="btn btn-secondary" style="display: block; text-align: center;">Get Started</a>
+            </div>
+            <!-- Pro Plan -->
+            <div class="card featured">
+                <div class="badge">Popular</div>
+                <h3>Veltrix Pro</h3>
+                <p class="card-desc">Built for production bots and heavy workloads.</p>
+                <div class="price">$5.00 <span>/ month</span></div>
+                <ul class="features-list">
+                    <li>Unlimited / High RAM Allocation</li>
+                    <li>Ultra-Fast Dedicated vCPU</li>
+                    <li>Advanced Enterprise DDoS Protection</li>
+                    <li>24/7 Uptime & Priority Support</li>
+                </ul>
+                <a href="#" class="btn btn-primary" style="display: block; text-align: center;">Upgrade to Pro</a>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
